@@ -27,25 +27,24 @@ Agora, clone o repositório que contém o script de teste de proxies:
 
 git clone https://github.com/DragonSCRIPTS/Proxy.git
 
+
 5. Acessar o Diretório do Script
 
-Navegue até o diretório onde o script foi clonado:
+Navegue até o diretório onde o repositório foi clonado:
 
-cd script
+cd Proxy
 
 
 6. Instalar Dependências
 
-O script utiliza o módulo socket, que já é parte da biblioteca padrão do Python, então não é necessário instalar nenhuma dependência adicional.
+O script utiliza o módulo socket, que já é parte da biblioteca padrão do Python, então não é necessário instalar dependências adicionais.
 
 
 7. Executar o Script
 
 Para rodar o script de teste de proxies, execute o seguinte comando no Termux:
 
-python nome_do_script.py
-
-Substitua nome_do_script.py pelo nome real do script que você clonou. No caso deste exemplo, o arquivo pode se chamar proxy_tester.py.
+python script
 
 
 8. Interagir com o Script
