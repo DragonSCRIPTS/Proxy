@@ -25,8 +25,7 @@ pkg install git python
 
 Agora, clone o repositório que contém o script de teste de proxies:
 
-git clone https://raw.githubusercontent.com/DragonSCRIPTS/Proxy/refs/heads/main/script
-
+git clone https://github.com/DragonSCRIPTS/Proxy.git
 
 5. Acessar o Diretório do Script
 
