@@ -3,14 +3,15 @@ import socket
 import threading
 
 class ProxyTester:
-    def __init__(self):
-        self.base_ip = "104.18.37.248"
+    def __init__(self, base_ip="104.18.37.248", count=10):
+        self.base_ip = base_ip
         self.proxies = []
         self.successful_proxies = []
+        self.count = count
 
-    def generate_proxies(self, count=10):
+    def generate_proxies(self):
         base_parts = self.base_ip.split('.')
-        for _ in range(count):
+        for _ in range(self.count):
             new_ip = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}.{random.randint(1, 255)}"
             self.proxies.append(new_ip)
 
@@ -20,6 +21,7 @@ class ProxyTester:
             s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             s.connect((proxy, 80))
             self.successful_proxies.append(proxy)
+            print(f"Proxy funcionando: {proxy}")
             s.close()
         except:
             pass
@@ -35,35 +37,24 @@ class ProxyTester:
 
     def display_successful_proxies(self):
         if self.successful_proxies:
-            print("Proxies bem-sucedidos:")
+            print("\nProxies bem-sucedidos:")
             for proxy in self.successful_proxies:
                 print(proxy)
         else:
             print("Nenhum proxy bem-sucedido.")
 
 def main():
-    tester = ProxyTester()
-    while True:
-        print("\nMenu:")
-        print("1. Gerar proxies aleatÃ³rios.")
-        print("2. Testar proxies gerados.")
-        print("3. Exibir proxies bem-sucedidos.")
-        print("4. Sair.")
-        choice = input("Escolha uma opÃ§Ã£o: ")
+    count = int(input("Quantos proxies gerar? "))
+    tester = ProxyTester(count=count)
+    
+    # Gerar proxies
+    tester.generate_proxies()
+    
+    # Testar proxies
+    tester.test_proxies()
 
-        if choice == '1':
-            count = int(input("Quantos proxies gerar? "))
-            tester.generate_proxies(count)
-            print(f"{count} proxies gerados.")
-        elif choice == '2':
-            tester.test_proxies()
-            print("Teste de proxies concluÃ­do.")
-        elif choice == '3':
-            tester.display_successful_proxies()
-        elif choice == '4':
-            break
-        else:
-            print("OpÃ§Ã£o invÃ¡lida. Tente novamente.")
+    # Exibir proxies bem-sucedidos
+    tester.display_successful_proxies()
 
 if __name__ == "__main__":
     main()
